@@ -1,0 +1,12 @@
+org/loose/fis/sre/exceptions/UsernameAlreadyExistsException.java
+ org.loose.fis.sre.exceptions.UsernameAlreadyExistsException
+org/loose/fis/sre/Main.java
+ org.loose.fis.sre.Main
+org/loose/fis/sre/model/User.java
+ org.loose.fis.sre.model.User
+org/loose/fis/sre/services/FileSystemService.java
+ org.loose.fis.sre.services.FileSystemService
+org/loose/fis/sre/controllers/RegistrationController.java
+ org.loose.fis.sre.controllers.RegistrationController
+org/loose/fis/sre/services/UserService.java
+ org.loose.fis.sre.services.UserService
