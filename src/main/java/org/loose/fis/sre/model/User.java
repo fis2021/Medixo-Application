@@ -7,11 +7,30 @@ public class User {
     private String username;
     private String password;
     private String role;
+    private String name;
+    private String age;
+    private String phoneNumber;
+    private String email;
+    private String specialization;
 
-    public User(String username, String password, String role) {
+    public User(String username, String password, String role, String name, String age, String phoneNumber, String email, String specialization) {
         this.username = username;
         this.password = password;
         this.role = role;
+        this.age = age;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.specialization = specialization;
+    }
+    public User(String username, String password, String role, String name, String age, String phoneNumber, String email) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.age = age;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
     }
 
     public User() {
@@ -40,6 +59,40 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public String getName (){
+        return this.name;
+    }
+
+    public void setName (String name){
+        this.name=name;
+    }
+
+    public String getAge(){
+        return this.age;
+    }
+
+    public void setAge(String age){
+        this.age=age;
+    }
+
+    public String getPhoneNumber(){
+        return this.phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber){
+        this.phoneNumber=phoneNumber;
+    }
+
+    public String getEmail(){
+        return this.email;
+    }
+
+    public void setEmail(String email){
+        this.email=email;
+    }
+
+
 
     @Override
     public boolean equals(Object o) {

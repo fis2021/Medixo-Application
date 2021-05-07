@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #DAF7A6; -fx-border-color: CAE59B; -fx-border-width: 0px 0px 2px 0px;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.DoctorRegistrationController">
+   <children>
+      <Text fill="#494a47" layoutX="207.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your credentials below:">
+         <font>
+            <Font name="Bell MT Italic" size="26.0" />
+         </font>
+      </Text>
+      <TextField fx:id="doctorUsernameField" alignment="CENTER" layoutX="276.0" layoutY="72.0" promptText="Username" style="-fx-background-color: ffffff; -fx-border-color: B7CE8F; -fx-border-width: 0px 0px 2px 0px;" />
+
+      <TextField fx:id="doctorPhoneNumberField" alignment="CENTER" layoutX="276.0" layoutY="320.0" promptText="Telephone number" style="-fx-background-color: ffffff; -fx-border-color: B7CE8F; -fx-border-width: 0px 0px 2px 0px;" />
+
+      <TextField fx:id="doctorEmailField" alignment="CENTER" layoutX="276.0" layoutY="266.0" promptText="Email address" style="-fx-background-color: ffffff; -fx-border-color: B7CE8F; -fx-border-width: 0px 0px 2px 0px;" />
+
+      <PasswordField fx:id="doctorPasswordField" alignment="CENTER" layoutX="276.0" layoutY="118.0" promptText="Password" style="-fx-background-color: ffffff; -fx-border-color: B7CE8F; -fx-border-width: 0px 0px 2px 0px;" />
+
+      <TextField fx:id="doctorNameField" alignment="CENTER" layoutX="276.0" layoutY="166.0" promptText="Full name" style="-fx-background-color: ffffff; -fx-border-color: B7CE8F; -fx-border-width: 0px 0px 2px 0px;" />
+
+      <TextField fx:id="doctorAgeField" alignment="CENTER" layoutX="276.0" layoutY="214.0" promptText="Age" style="-fx-background-color: ffffff; -fx-border-color: B7CE8F; -fx-border-width: 0px 0px 2px 0px;" />
+
+      <Button layoutX="578.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleRegisterAction" style="-fx-background-color: B7CE8F;" text="Register" />
+
+      <ChoiceBox fx:id="specialization" layoutX="361.0" layoutY="374.0" prefWidth="150.0" style="-fx-background-color: B7CE8F;" />
+
+      <Text fill="#545050" layoutX="222.0" layoutY="391.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select specialization:" />
+
+      <Text fx:id="registrationMessage" fill="#494a47" layoutX="168.0" layoutY="448.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="363.5078125" />
+   </children>
+</Pane>
