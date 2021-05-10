@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #DAF7A6;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.SetHoliday">
+   <children>
+      <Text layoutX="244.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the dates below:">
+         <font>
+            <Font name="Bell MT Italic" size="26.0" />
+         </font>
+      </Text>
+      <TextField fx:id="firstDay" alignment="CENTER" layoutX="244.0" layoutY="192.0" prefHeight="27.0" prefWidth="230.0" promptText="First day of the holiday" style="-fx-background-color: ffffff; -fx-border-color: B7CE8F; -fx-border-width: 0px 0px 2px 0px;" />
+      <TextField fx:id="lastDay" alignment="CENTER" layoutX="244.0" layoutY="250.0" prefHeight="27.0" prefWidth="230.0" promptText="Last day of the holiday" style="-fx-background-color: ffffff; -fx-border-color: B7CE8F; -fx-border-width: 0px 0px 2px 0px;" />
+      <Button fx:id="goBack" layoutX="66.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleGoBackButton" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: B7CE8F;" text="Back" />
+      <Button fx:id="setHoliday" layoutX="543.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleSetHolidayButton" style="-fx-background-color: B7CE8F;" text="Set holiday" />
+   </children>
+</AnchorPane>
