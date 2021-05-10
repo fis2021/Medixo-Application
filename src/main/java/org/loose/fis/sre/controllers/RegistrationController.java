@@ -29,14 +29,14 @@ public class RegistrationController {
     @FXML
     void handlePatientAction(ActionEvent event) {
         try{
-            FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("register_patient_user.fxml"));
-            Parent root2 = (Parent) fxmlLoader2.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root2));
-            stage.show();
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("register_patient_user.fxml"));
+            Stage scene= (Stage) patientButton.getScene().getWindow();
+            scene.setTitle("Medixo");
+            scene.setScene(new Scene(root,725,490));
         } catch (Exception e2){
             System.out.println("Can t open the Patient window!");
         }
     }
+
 
 }
