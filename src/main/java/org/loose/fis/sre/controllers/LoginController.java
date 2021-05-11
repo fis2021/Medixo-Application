@@ -2,6 +2,8 @@ package org.loose.fis.sre.controllers;
 
 import javafx.stage.Stage;
 import org.loose.fis.sre.exceptions.AccountException;
+import org.loose.fis.sre.exceptions.WrongPasswordException;
+import org.loose.fis.sre.exceptions.UsernameDoesNotExistException;
 import org.loose.fis.sre.model.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -11,6 +13,10 @@ import javafx.scene.control.Button;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.Node;
+import org.loose.fis.sre.model.WhoIsLoggedInfo;
+import org.loose.fis.sre.services.UserService;
 
 
 
@@ -27,39 +33,69 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
 
+    @FXML
+    private ChoiceBox selectRole;
+
+    @FXML
+    public void initialize() {
+        selectRole.getItems().addAll("Doctor", "Patient", "Manager");
+    }
+
+    @FXML
+    private Text loginUsernameMessage;
 
 
-    public void handleLoginAction() throws Exception{
-        Stage primary = (Stage) registrationMessage.getScene().getWindow();
-
+    @FXML
+    public void handleLoginAction(javafx.event.ActionEvent login) throws Exception {
         try {
-            String role = User.getRole();
-            User.setUsername(usernameField.getText());
-            if(role.equals("Doctor")){
-                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/doctor_menu.fxml"));
-                Scene nextScene = new Scene(root, 725,490);
+            UserService.checkUserCredentials(usernameField.getText(), passwordField.getText());
+            loginUsernameMessage.setText("Login successfully!");
+            String userRole = (String) selectRole.getValue();
+            /*if (userRole.equals("Doctor")) {
+                WhoIsLoggedInfo.setLoggedUsername(usernameField.getText()); //Added this to see who is logged (which username)
+                Parent root2 = FXMLLoader.load(getClass().getClassLoader().getResource("doctor_menu.fxml"));
+                Stage window = (Stage) ((Node) login.getSource()).getScene().getWindow();
+                ;
+                window.setTitle("Doctor Menu");
+                window.setScene(new Scene(root2, 725, 490));
+                window.show();
 
-                primary.setScene(nextScene);
+            } else
+                if (userRole.equals("Patient")) {
+                WhoIsLoggedInfo.setLoggedUsername(usernameField.getText()); //Added this to see who is logged (which username)
+                Parent root2 = FXMLLoader.load(getClass().getClassLoader().getResource("patient_menu.fxml"));
+                Stage window = (Stage) ((Node) login.getSource()).getScene().getWindow();
+                ;
+                window.setTitle("Patient Menu");
+                window.setScene(new Scene(root2, 725, 490));
+                window.show();
+
+                }
+                else*/
+            if (userRole.equals("Manager")) {
+                WhoIsLoggedInfo.setLoggedUsername(usernameField.getText()); //Added this to see who is logged (which username)
+                Parent root2 = FXMLLoader.load(getClass().getClassLoader().getResource("manager_menu.fxml"));
+                Stage window = (Stage) ((Node) login.getSource()).getScene().getWindow();
+                ;
+                window.setTitle("Manager Menu");
+                window.setScene(new Scene(root2, 725, 490));
+                window.show();
+
             }
-            else
-            if(role.equals("Pacient")){
-                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/patient_menu.fxml"));
-                Scene nextScene = new Scene(root, 725,490);
 
-                primary.setScene(nextScene);
-            }
-
-        }catch (AccountException e) {
-            registrationMessage.setText(e.getMessage());
+        } catch (UsernameDoesNotExistException e) {
+            loginUsernameMessage.setText(e.getMessage());
+        } catch (WrongPasswordException e) {
+            loginUsernameMessage.setText(e.getMessage());
         }
     }
 
-    public void handleRegisterAction() throws Exception{
-
-        Stage primary = (Stage) registrationMessage.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/register_choose_user.fxml"));
-        Scene nextScene = new Scene(root, 725,490);
-
-        primary.setScene(nextScene);
+    public void handleRegisterAction(javafx.event.ActionEvent login) throws Exception {
+        Parent root1 = FXMLLoader.load(getClass().getClassLoader().getResource("register_choose_user.fxml"));
+        Stage window = (Stage) ((Node) login.getSource()).getScene().getWindow();
+        ;
+        window.setTitle("Registration");
+        window.setScene(new Scene(root1, 725, 490));
+        window.show();
     }
 }

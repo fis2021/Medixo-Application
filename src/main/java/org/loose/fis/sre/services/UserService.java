@@ -2,11 +2,10 @@ package org.loose.fis.sre.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
-import org.loose.fis.sre.exceptions.InvalidCredentialException;
-import org.loose.fis.sre.exceptions.InvalidEmailException;
-import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
+import org.loose.fis.sre.exceptions.*;
 import org.loose.fis.sre.model.User;
 
+import java.net.PasswordAuthentication;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -177,5 +176,21 @@ public class UserService {
         return md;
     }
 
+    public static void checkUserCredentials(String username, String password) throws UsernameDoesNotExistException, WrongPasswordException {
+        int oku = 0, okp = 0;
+        for (User user : userRepository.find()) {
+            if (Objects.equals(username, user.getUsername())) {
+                oku = 1;
+                if(encodePassword(username,password).equals(user.getPassword())) {
+                    okp = 1;
+                }
+            }
 
+        }
+        if (oku == 0)
+            throw new UsernameDoesNotExistException(username);
+        if (okp == 0)
+            throw new WrongPasswordException();
+
+    }
 }
