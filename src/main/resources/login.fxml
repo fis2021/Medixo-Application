@@ -13,9 +13,9 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #DAF7A6; -fx-border-color: CAE59B; -fx-border-width: 0px 0px 2px 0px;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.LoginController">
     <children>
-        <TextField fx:id="patientUsernameField" alignment="CENTER" layoutX="255.0" layoutY="75.0" prefHeight="41.0" prefWidth="185.0" promptText="Username" style="-fx-background-color: ffffff; -fx-border-color: B7CE8F; -fx-border-width: 0px 0px 2px 0px;" />
+        <TextField fx:id="usernameField" alignment="CENTER" layoutX="255.0" layoutY="75.0" prefHeight="41.0" prefWidth="185.0" promptText="Username" style="-fx-background-color: ffffff; -fx-border-color: B7CE8F; -fx-border-width: 0px 0px 2px 0px;" />
 
-        <PasswordField fx:id="patientPasswordField" alignment="CENTER" layoutX="255.0" layoutY="130.0" prefHeight="41.0" prefWidth="185.0" promptText="Password" style="-fx-background-color: ffffff; -fx-border-color: B7CE8F; -fx-border-width: 0px 0px 2px 0px;" />
+        <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="255.0" layoutY="130.0" prefHeight="41.0" prefWidth="185.0" promptText="Password" style="-fx-background-color: ffffff; -fx-border-color: B7CE8F; -fx-border-width: 0px 0px 2px 0px;" />
 
         <Button layoutX="297.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleLoginAction" prefHeight="29.0" prefWidth="101.0" style="-fx-background-color: B7CE8F;" text="Log in" />
         <Text fill="#494a47" layoutX="225.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="If you want to register click " wrappingWidth="199.1474609375">

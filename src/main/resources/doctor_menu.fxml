@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #DAF7A6;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.DoctorMenu">
    <children>
-      <Text layoutX="268.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose option:" wrappingWidth="164.13671875">
+      <Text layoutX="268.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose option:" wrappingWidth="164.13671875">
          <font>
             <Font name="Bell MT" size="26.0" />
          </font>
       </Text>
-      <Button fx:id="addAppointmentButton" layoutX="120.0" layoutY="173.0" mnemonicParsing="false" onAction="#handleAddAppointmentAction" prefHeight="31.0" prefWidth="156.0" style="-fx-background-color: B7CE8F;" text="Add appointment type" />
-      <Button fx:id="editAppointmentButton" layoutX="120.0" layoutY="306.0" mnemonicParsing="false" onAction="#handleEditAppointmentAction" prefHeight="31.0" prefWidth="156.0" style="-fx-background-color: B7CE8F;" text="Edit appointment type" />
-      <Button fx:id="seeAppointmentsButton" layoutX="432.0" layoutY="173.0" mnemonicParsing="false" onAction="#handleSeeTodaysAppointmentsButton" prefHeight="31.0" prefWidth="156.0" style="-fx-background-color: B7CE8F;" text="See today's appointments" />
-      <Button fx:id="setHolidayButton" layoutX="432.0" layoutY="306.0" mnemonicParsing="false" onAction="#handleSetHolidayButton" prefHeight="31.0" prefWidth="156.0" style="-fx-background-color: B7CE8F;" text="Set holiday" />
-      <Button fx:id="logOutButton" layoutX="609.0" layoutY="453.0" mnemonicParsing="false" onAction="#handleLogOutAction" style="-fx-background-color: B7CE8F;" text="Log out" />
+      <Button fx:id="addAppointmentButton" layoutX="264.0" layoutY="93.0" mnemonicParsing="false" onAction="#handleAddAppointmentAction" prefHeight="41.0" prefWidth="173.0" style="-fx-background-color: B7CE8F;" text="Add appointment type" />
+      <Button fx:id="editAppointmentButton" layoutX="264.0" layoutY="159.0" mnemonicParsing="false" onAction="#handleEditAppointmentAction" prefHeight="41.0" prefWidth="173.0" style="-fx-background-color: B7CE8F;" text="Edit appointment type" />
+      <Button fx:id="seeAppointmentsButton" layoutX="264.0" layoutY="230.0" mnemonicParsing="false" onAction="#handleSeeTodaysAppointmentsButton" prefHeight="41.0" prefWidth="173.0" style="-fx-background-color: B7CE8F;" text="See today's appointments" />
+      <Button fx:id="setHolidayButton" layoutX="264.0" layoutY="295.0" mnemonicParsing="false" onAction="#handleSetHolidayButton" prefHeight="41.0" prefWidth="173.0" style="-fx-background-color: B7CE8F;" text="Set holiday" />
+      <Button fx:id="logOutButton" layoutX="596.0" layoutY="438.0" mnemonicParsing="false" onAction="#handleLogOutAction" style="-fx-background-color: B7CE8F;" text="Log out" />
+      <ImageView fitHeight="141.0" fitWidth="193.0" layoutX="280.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/MEDIXO.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
