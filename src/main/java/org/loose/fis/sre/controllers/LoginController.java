@@ -51,8 +51,8 @@ public class LoginController {
             UserService.checkUserCredentials(usernameField.getText(), passwordField.getText());
             loginUsernameMessage.setText("Login successfully!");
             String userRole = (String) selectRole.getValue();
-            /*if (userRole.equals("Doctor")) {
-                WhoIsLoggedInfo.setLoggedUsername(usernameField.getText()); //Added this to see who is logged (which username)
+            if (userRole.equals("Doctor")) {
+                WhoIsLoggedInfo.setLoggedUsername(usernameField.getText());
                 Parent root2 = FXMLLoader.load(getClass().getClassLoader().getResource("doctor_menu.fxml"));
                 Stage window = (Stage) ((Node) login.getSource()).getScene().getWindow();
                 ;
@@ -60,9 +60,9 @@ public class LoginController {
                 window.setScene(new Scene(root2, 725, 490));
                 window.show();
 
-            } else*/
+            } else
                 if (userRole.equals("Patient")) {
-                WhoIsLoggedInfo.setLoggedUsername(usernameField.getText()); //Added this to see who is logged (which username)
+                WhoIsLoggedInfo.setLoggedUsername(usernameField.getText());
                 Parent root2 = FXMLLoader.load(getClass().getClassLoader().getResource("patient_menu.fxml"));
                 Stage window = (Stage) ((Node) login.getSource()).getScene().getWindow();
                 ;
@@ -73,7 +73,7 @@ public class LoginController {
                 }
                 else
             if (userRole.equals("Manager")) {
-                WhoIsLoggedInfo.setLoggedUsername(usernameField.getText()); //Added this to see who is logged (which username)
+                WhoIsLoggedInfo.setLoggedUsername(usernameField.getText());
                 Parent root2 = FXMLLoader.load(getClass().getClassLoader().getResource("manager_menu.fxml"));
                 Stage window = (Stage) ((Node) login.getSource()).getScene().getWindow();
                 ;

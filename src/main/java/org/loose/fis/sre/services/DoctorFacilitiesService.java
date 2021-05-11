@@ -5,6 +5,7 @@ import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.exceptions.DoctorServiceAlreadyExistsException;
 import org.loose.fis.sre.exceptions.EmptyTextfieldsException;
 import org.loose.fis.sre.model.DoctorService;
+import org.loose.fis.sre.model.WhoIsLoggedInfo;
 import org.loose.fis.sre.services.FileSystemService;
 
 import java.util.Objects;
