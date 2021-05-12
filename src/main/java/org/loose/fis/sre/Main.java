@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.loose.fis.sre.services.AppointmentService;
 import org.loose.fis.sre.services.FileSystemService;
 import org.loose.fis.sre.services.UserService;
 
@@ -17,6 +18,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         initDirectory();
         UserService.initDatabase();
+        AppointmentService.initDatabase();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         primaryStage.setTitle("Sign up");
         primaryStage.setScene(new Scene(root, 700, 500));
@@ -28,7 +30,6 @@ public class Main extends Application {
         if (!Files.exists(applicationHomePath))
             applicationHomePath.toFile().mkdirs();
     }
-
 
     public static void main(String[] args) {
         launch(args);

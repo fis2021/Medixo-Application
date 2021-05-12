@@ -51,6 +51,14 @@ public class UserService {
         }
     }
 
+    public static void checkDoctorDoesExist(String doctor) throws DoctorDoesNotExistException {
+        for (User user : userRepository.find()) {
+            if (Objects.equals(user.getRole(), "Doctor") && Objects.equals(user.getName(), doctor))
+                return;
+        }
+        throw new DoctorDoesNotExistException(doctor);
+    }
+
     private static void checkUsername(String username) throws InvalidCredentialException{
         int ok = 1;
         String message = "";
@@ -70,10 +78,21 @@ public class UserService {
             }
         }
 
-
         if (ok==0){
             throw new InvalidCredentialException(message);
         }
+    }
+
+    public static void checkUsernameA(String username) throws IncorrectNameException
+    {
+        for(User user : userRepository.find())
+        {
+            if(Objects.equals(username,user.getUsername()))
+            {
+                return;
+            }
+        }
+        throw new IncorrectNameException(username);
     }
 
     private static void checkPassword(String password) throws InvalidCredentialException{
@@ -191,6 +210,19 @@ public class UserService {
             throw new UsernameDoesNotExistException(username);
         if (okp == 0)
             throw new WrongPasswordException();
+
+    }
+
+    public static void CheckNameCredentials (String Name) throws NoAppointmentsException
+    {
+
+        for (User user : userRepository.find()) {
+            if (Objects.equals(Name, user.getName()))
+            {
+                return;
+            }
+        }
+        throw new NoAppointmentsException(Name);
 
     }
 }
