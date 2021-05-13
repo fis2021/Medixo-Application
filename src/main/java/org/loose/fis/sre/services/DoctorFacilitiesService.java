@@ -36,6 +36,17 @@ public class DoctorFacilitiesService {
         if (serviceName.equals(""))
             throw new EmptyTextfieldsException();
     }
+    public static void deleteService(String username,String serviceName){
+        DoctorService service_aux = new  DoctorService();
+
+        for ( DoctorService service : servicesRepository.find()){
+            if (username.equals(service.getUsername())&&serviceName.equals(service.getServiceName())) {
+                service_aux = service;
+            }
+        }
+
+        servicesRepository.remove(eq("serviceName",serviceName),service_aux);
+    }
 
     private static void checkServiceExists(String serviceName)  throws DoctorServiceAlreadyExistsException {
 
