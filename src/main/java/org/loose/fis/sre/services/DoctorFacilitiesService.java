@@ -4,11 +4,14 @@ import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.exceptions.DoctorServiceAlreadyExistsException;
 import org.loose.fis.sre.exceptions.EmptyTextfieldsException;
+import org.loose.fis.sre.exceptions.IncorrectNameException;
+import org.loose.fis.sre.exceptions.NoAppointmentsException;
+import org.loose.fis.sre.model.Appointment;
 import org.loose.fis.sre.model.DoctorService;
 import org.loose.fis.sre.model.WhoIsLoggedInfo;
-import org.loose.fis.sre.services.FileSystemService;
 
 import java.util.Objects;
+
 import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
 
 public class DoctorFacilitiesService {

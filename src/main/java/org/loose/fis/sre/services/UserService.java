@@ -195,14 +195,17 @@ public class UserService {
         return md;
     }
 
-    public static void checkUserCredentials(String username, String password) throws UsernameDoesNotExistException, WrongPasswordException {
-        int oku = 0, okp = 0;
+    public static void checkUserCredentials(String username, String password, String role) throws UsernameDoesNotExistException, WrongPasswordException, WrongRoleException {
+        int oku = 0, okp = 0, okr=0;
         for (User user : userRepository.find()) {
             if (Objects.equals(username, user.getUsername())) {
                 oku = 1;
                 if(encodePassword(username,password).equals(user.getPassword())) {
                     okp = 1;
+                    if (Objects.equals(role, user.getRole()))
+                        okr=1;
                 }
+
             }
 
         }
@@ -210,6 +213,8 @@ public class UserService {
             throw new UsernameDoesNotExistException(username);
         if (okp == 0)
             throw new WrongPasswordException();
+        if(okr == 0)
+            throw new WrongRoleException();
 
     }
 

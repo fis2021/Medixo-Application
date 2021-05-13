@@ -4,6 +4,7 @@ import javafx.stage.Stage;
 import org.loose.fis.sre.exceptions.AccountException;
 import org.loose.fis.sre.exceptions.WrongPasswordException;
 import org.loose.fis.sre.exceptions.UsernameDoesNotExistException;
+import org.loose.fis.sre.exceptions.WrongRoleException;
 import org.loose.fis.sre.model.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -48,7 +49,7 @@ public class LoginController {
     @FXML
     public void handleLoginAction(javafx.event.ActionEvent login) throws Exception {
         try {
-            UserService.checkUserCredentials(usernameField.getText(), passwordField.getText());
+            UserService.checkUserCredentials(usernameField.getText(), passwordField.getText(), (String) selectRole.getValue());
             loginUsernameMessage.setText("Login successfully!");
             String userRole = (String) selectRole.getValue();
             if (userRole.equals("Doctor")) {
@@ -87,7 +88,10 @@ public class LoginController {
             loginUsernameMessage.setText(e.getMessage());
         } catch (WrongPasswordException e) {
             loginUsernameMessage.setText(e.getMessage());
+        }catch (WrongRoleException e){
+            loginUsernameMessage.setText(e.getMessage());
         }
+
     }
 
     public void handleRegisterAction(javafx.event.ActionEvent login) throws Exception {
