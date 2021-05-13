@@ -91,13 +91,13 @@ public class Appointment {
 
     @java.lang.Override
     public java.lang.String toString() {
-        return "Appointment{" +
-                ", day=" + day  +
-                ", month=" + month  +
-                ", year= " + year  +
-                ", hour= " + hour  + "\n" +
-                ", doctor= " + doctor +
-                ", Name='" + user  +
-                '}';
+        return "Appointment:" +
+                " date: " + day  +
+                "/" + month  +
+                "/" + year  +
+                ", at " + hour +
+                ", doctor: " + doctor +
+                ", patient: " + user  +
+                ';'+ "\n" ;
     }
 }
