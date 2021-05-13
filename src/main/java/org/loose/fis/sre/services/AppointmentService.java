@@ -3,6 +3,7 @@ package org.loose.fis.sre.services;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.exceptions.*;
+import org.loose.fis.sre.exceptions.UnavailableDayException;
 import org.loose.fis.sre.model.Appointment;
 
 import java.util.List;
@@ -29,8 +30,7 @@ public class AppointmentService {
     {
         return appointmentRepository;
     }
-    public static void addAppointment(String day,String month,String year,String hour, String doctor, String user) throws AppointmentAlreadyExistException, IncorrectNameException,  IncorrectDateException, DoctorDoesNotExistException
-    {
+    public static void addAppointment(String day,String month,String year,String hour, String doctor, String user) throws AppointmentAlreadyExistException, IncorrectNameException, IncorrectDateException, DoctorDoesNotExistException, UnavailableDayException {
         checkAppointmentDoesNotAlreadyExist(day,month,year,hour,doctor);
         checkDate(day,month,year);
         UserService.checkDoctorDoesExist(doctor);
@@ -41,9 +41,12 @@ public class AppointmentService {
 
 
 
-    static void checkAppointmentDoesNotAlreadyExist(String day,String month,String year,String hour,String doctor) throws AppointmentAlreadyExistException {
+    static void checkAppointmentDoesNotAlreadyExist(String day,String month,String year,String hour,String doctor) throws AppointmentAlreadyExistException, UnavailableDayException {
         for (Appointment appointment : appointmentRepository.find()) {
-            if (Objects.equals(day, appointment.getDay()) && Objects.equals(month, appointment.getMonth()) && Objects.equals(year, appointment.getYear()) && Objects.equals(hour, appointment.getHour())  && Objects.equals(doctor, appointment.getDoctor()))
+            if(Objects.equals(day, appointment.getDay()) && Objects.equals(month, appointment.getMonth()) && Objects.equals(year, appointment.getYear()) &&
+                    Objects.equals("00:00",appointment.getHour())  && Objects.equals(doctor, appointment.getDoctor()))
+                throw new UnavailableDayException();
+            else if (Objects.equals(day, appointment.getDay()) && Objects.equals(month, appointment.getMonth()) && Objects.equals(year, appointment.getYear()) && Objects.equals(hour, appointment.getHour())   && Objects.equals(doctor, appointment.getDoctor()) )
                 throw new AppointmentAlreadyExistException(day,month,year,hour,doctor);
         }
     }
@@ -65,6 +68,20 @@ public class AppointmentService {
         for (Appointment  appointment : appointmentRepository.find())
         {
             if(Objects.equals(user, appointment.getUser())) {
+                s = s + appointment.toString();
+                s = s + "\n";
+            }
+        }
+        return s;
+    }
+
+    public static String  seeAppointments(String user, String day, String month, String year) throws NoAppointmentsException, IncorrectNameException
+    {
+        UserService.checkUsernameA(user);
+        String s="";
+        for (Appointment  appointment : appointmentRepository.find())
+        {
+            if(Objects.equals(user, appointment.getDoctor()) && Objects.equals(day, appointment.getDay()) && Objects.equals(month, appointment.getMonth()) && Objects.equals(year, appointment.getYear()) ) {
                 s = s + appointment.toString();
                 s = s + "\n";
             }

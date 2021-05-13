@@ -34,8 +34,6 @@ public class DoctorService extends RemoveOptions {
         return price;
     }
 
-
-
     public void setUsername(String username) {
         this.username = username;
     }

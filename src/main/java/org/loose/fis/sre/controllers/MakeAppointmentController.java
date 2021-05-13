@@ -9,10 +9,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.loose.fis.sre.exceptions.AppointmentAlreadyExistException;
-import org.loose.fis.sre.exceptions.DoctorDoesNotExistException;
-import org.loose.fis.sre.exceptions.IncorrectDateException;
-import org.loose.fis.sre.exceptions.IncorrectNameException;
+import org.loose.fis.sre.exceptions.*;
 import org.loose.fis.sre.services.AppointmentService;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -90,6 +87,8 @@ public class MakeAppointmentController {
             make_appointmentMessage.setText(e.getMessage());
         }
         catch (AppointmentAlreadyExistException e) {
+            make_appointmentMessage.setText(e.getMessage());
+        } catch (UnavailableDayException e) {
             make_appointmentMessage.setText(e.getMessage());
         }
     }
