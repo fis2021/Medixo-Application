@@ -3,7 +3,6 @@ package org.loose.fis.sre.services;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.exceptions.*;
-import org.loose.fis.sre.exceptions.UnavailableDayException;
 import org.loose.fis.sre.model.Appointment;
 
 import java.util.List;
@@ -21,6 +20,16 @@ public class AppointmentService {
                 .openOrCreate("app", "app");
 
         appointmentRepository = database.getRepository(Appointment.class);
+
+    }
+
+    public static ObjectRepository<Appointment> getServicesRepository() {
+        return appointmentRepository;
+    }
+
+    public static void persistAppointment(Appointment appointment)
+    {
+        appointmentRepository.update(appointment, true);
     }
 
     public static List<Appointment> getAllAppointments() {
@@ -30,12 +39,14 @@ public class AppointmentService {
     {
         return appointmentRepository;
     }
-    public static void addAppointment(String day,String month,String year,String hour, String doctor, String user) throws AppointmentAlreadyExistException, IncorrectNameException, IncorrectDateException, DoctorDoesNotExistException, UnavailableDayException {
+    public static void addAppointment(String day,String month,String year,String hour, String doctor, String user) throws AppointmentAlreadyExistException, IncorrectNameException,  IncorrectDateException, DoctorDoesNotExistException
+    {
         checkAppointmentDoesNotAlreadyExist(day,month,year,hour,doctor);
         checkDate(day,month,year);
         UserService.checkDoctorDoesExist(doctor);
         UserService.checkUsernameA(user);
         Appointment app=new Appointment(day,month,year,hour,doctor,user);
+        persistAppointment(app);
         appointmentRepository.insert(app);
     }
 
@@ -74,20 +85,6 @@ public class AppointmentService {
         }
         return s;
     }
-
-    public static String  seeAppointments(String user, String day, String month, String year) throws NoAppointmentsException, IncorrectNameException
-    {
-        UserService.checkUsernameA(user);
-        String s="";
-        for (Appointment  appointment : appointmentRepository.find())
-        {
-            if(Objects.equals(user, appointment.getDoctor()) && Objects.equals(day, appointment.getDay()) && Objects.equals(month, appointment.getMonth()) && Objects.equals(year, appointment.getYear()) ) {
-                s = s + appointment.toString();
-                s = s + "\n";
-            }
-        }
-        return s;
-    }
     public static String  seeHistoryAppointments (String Name) throws NoAppointmentsException
     {
         UserService.CheckNameCredentials(Name);
@@ -102,4 +99,19 @@ public class AppointmentService {
         return s;
     }
 
+    public static void deleteService(String username,String day, String month, String year, String hour) throws AppointmentDoesNotExistException
+    {
+        Appointment service_aux = new  Appointment();
+        int ok=0;
+        for ( Appointment service : appointmentRepository.find()){
+            if (username.equals(service.getUser())&&day.equals(service.getDay())&&month.equals(service.getMonth())&&year.equals(service.getYear())&&hour.equals(service.getHour())) {
+                service_aux = service;
+                ok=1;
+            }
+        }
+        if (ok==0)
+            throw new AppointmentDoesNotExistException(day,month,year,hour);
+        else
+            appointmentRepository.remove(service_aux);
+    }
 }
