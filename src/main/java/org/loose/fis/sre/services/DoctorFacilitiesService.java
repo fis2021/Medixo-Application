@@ -21,21 +21,23 @@ public class DoctorFacilitiesService {
 
     public static void initDatabase() {
         Nitrite database = Nitrite.builder()
-                .filePath(FileSystemService.getPathToFile("medixo-services.db").toFile())
+                .filePath(FileSystemService.getPathToFile("medixo-appointmentTypes.db").toFile())
                 .openOrCreate("test", "test");
 
         servicesRepository = database.getRepository(DoctorService.class);
     }
 
-    public static void addService(String username,String serviceName, String description, String price) throws EmptyTextfieldsException, DoctorServiceAlreadyExistsException{
-        checkEmptyTextFields(serviceName);
-        checkServiceExists(serviceName);
-        servicesRepository.insert(new DoctorService(username, serviceName, description, price));
+    public static void addService(String username,String appointmentTypeName, String description, String price) throws EmptyTextfieldsException, DoctorServiceAlreadyExistsException{
+        checkEmptyTextFields(appointmentTypeName);
+        checkServiceExists(appointmentTypeName);
+        servicesRepository.insert(new DoctorService(username, appointmentTypeName, description, price));
     }
+
     private static void checkEmptyTextFields(String serviceName) throws EmptyTextfieldsException {
         if (serviceName.equals(""))
             throw new EmptyTextfieldsException();
     }
+
     public static void deleteService(String username,String serviceName){
         DoctorService service_aux = new  DoctorService();
 
@@ -46,6 +48,27 @@ public class DoctorFacilitiesService {
         }
 
         servicesRepository.remove(eq("serviceName",serviceName),service_aux);
+    }
+
+    public static void editAppointmentType(String username, String appointmentTypeNameOld, String appointmentTypeNameNew,  String descriptionNew,  String priceNew) throws EmptyTextfieldsException, DoctorServiceAlreadyExistsException {
+        checkEmptyTextFields(appointmentTypeNameNew);
+        checkEmptyTextFields(descriptionNew);
+        checkEmptyTextFields(priceNew);
+        checkServiceExists(appointmentTypeNameNew);
+        DoctorService service_aux = new DoctorService();
+
+        for (DoctorService service : servicesRepository.find()) {
+            if (username.equals(service.getUsername()) && appointmentTypeNameOld.equals(service.getServiceName())) {
+                service_aux = service;
+            }
+        }
+        if (!appointmentTypeNameNew.equals("")){
+            service_aux.setAppointmentTypeName(appointmentTypeNameNew);
+            service_aux.setDescription(descriptionNew);
+            service_aux.setPrice(priceNew);
+        }
+
+        servicesRepository.update(eq("appointmentTypeName", appointmentTypeNameOld), service_aux);
     }
 
     private static void checkServiceExists(String serviceName)  throws DoctorServiceAlreadyExistsException {

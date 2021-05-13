@@ -22,7 +22,7 @@ import java.util.Optional;
 
 public class DeleteAppointmentType {
 
-    private static ObjectRepository<DoctorService> servicesRepository = DoctorFacilitiesService.getServicesRepository();
+    private static ObjectRepository<DoctorService> appointmentTypesRepository = DoctorFacilitiesService.getServicesRepository();
 
     @FXML
     private ListView<String> appointmentListView =  new ListView<String>();
@@ -50,7 +50,7 @@ public class DeleteAppointmentType {
         else{
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Message");
-            alert.setHeaderText("Are you sure you want to delete the service?");
+            alert.setHeaderText("Are you sure you want to delete the appointment type?");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get().equals(ButtonType.OK)) {
                 DoctorFacilitiesService.deleteService(WhoIsLoggedInfo.getLoggedUsername(),appointmentListView.getSelectionModel().getSelectedItem().toString());
@@ -76,7 +76,7 @@ public class DeleteAppointmentType {
 
     public void updateListView(){
         ObservableList<String> items = FXCollections.observableArrayList();
-        for (DoctorService service : servicesRepository.find()) {
+        for (DoctorService service : appointmentTypesRepository.find()) {
             if (WhoIsLoggedInfo.getLoggedUsername().equals(service.getUsername())) {
                 items.add(service.getServiceName());
                 appointmentListView.setItems(items);
