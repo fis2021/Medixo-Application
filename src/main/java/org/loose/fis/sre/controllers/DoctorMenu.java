@@ -26,6 +26,9 @@ public class DoctorMenu {
     private Button logOutButton;
 
     @FXML
+    private Button deleteAppointment;
+
+    @FXML
     void handleAddAppointmentAction(ActionEvent event) {
         try{
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("add_appointment_type.fxml"));
@@ -41,6 +44,19 @@ public class DoctorMenu {
     @FXML
     void handleEditAppointmentAction(ActionEvent event) {
 
+
+    }
+
+    @FXML
+    void handleDeleteAppointmentAction(ActionEvent event) {
+        try{
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("delete_appointment_type.fxml"));
+            Stage scene= (Stage) logOutButton.getScene().getWindow();
+            scene.setTitle("Medixo");
+            scene.setScene(new Scene(root,725,490));
+        } catch (Exception e2){
+            System.out.println("Can t open the 'Log in' window!");
+        }
 
     }
 

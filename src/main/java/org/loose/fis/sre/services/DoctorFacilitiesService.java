@@ -27,7 +27,7 @@ public class DoctorFacilitiesService {
         servicesRepository = database.getRepository(DoctorService.class);
     }
 
-    public static void addService(String username,String serviceName, String description, int price) throws EmptyTextfieldsException, DoctorServiceAlreadyExistsException{
+    public static void addService(String username,String serviceName, String description, String price) throws EmptyTextfieldsException, DoctorServiceAlreadyExistsException{
         checkEmptyTextFields(serviceName);
         checkServiceExists(serviceName);
         servicesRepository.insert(new DoctorService(username, serviceName, description, price));
@@ -35,6 +35,17 @@ public class DoctorFacilitiesService {
     private static void checkEmptyTextFields(String serviceName) throws EmptyTextfieldsException {
         if (serviceName.equals(""))
             throw new EmptyTextfieldsException();
+    }
+    public static void deleteService(String username,String serviceName){
+        DoctorService service_aux = new  DoctorService();
+
+        for ( DoctorService service : servicesRepository.find()){
+            if (username.equals(service.getUsername())&&serviceName.equals(service.getServiceName())) {
+                service_aux = service;
+            }
+        }
+
+        servicesRepository.remove(eq("serviceName",serviceName),service_aux);
     }
 
     private static void checkServiceExists(String serviceName)  throws DoctorServiceAlreadyExistsException {

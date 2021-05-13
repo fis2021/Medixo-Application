@@ -6,12 +6,12 @@ public class DoctorService extends RemoveOptions {
     private String username;
     private String serviceName;
     private String description;
-    private int price;
+    private String price;
 
     public DoctorService() {
     }
 
-    public DoctorService(String username,String serviceName, String description, int price) {
+    public DoctorService(String username,String serviceName, String description, String price) {
         this.username = username;
         this.description = description;
         this.serviceName = serviceName;
@@ -30,7 +30,7 @@ public class DoctorService extends RemoveOptions {
         return serviceName;
     }
 
-    public int getPrice(){
+    public String getPrice(){
         return price;
     }
 
@@ -48,7 +48,7 @@ public class DoctorService extends RemoveOptions {
         this.serviceName = serviceName;
     }
 
-    public void setPrice (int price){
+    public void setPrice (String price){
         this.price = price;
     }
 }
