@@ -61,7 +61,7 @@ public class LoginController {
                 window.setScene(new Scene(root2, 725, 490));
                 window.show();
 
-            } else
+            }
                 if (userRole.equals("Patient")) {
                 WhoIsLoggedInfo.setLoggedUsername(usernameField.getText());
                 Parent root2 = FXMLLoader.load(getClass().getClassLoader().getResource("patient_menu.fxml"));
@@ -72,7 +72,7 @@ public class LoginController {
                 window.show();
 
                 }
-                else
+
             if (userRole.equals("Manager")) {
                 WhoIsLoggedInfo.setLoggedUsername(usernameField.getText());
                 Parent root2 = FXMLLoader.load(getClass().getClassLoader().getResource("manager_menu.fxml"));

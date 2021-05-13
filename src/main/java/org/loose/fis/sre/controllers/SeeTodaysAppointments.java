@@ -12,7 +12,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import org.dizitart.no2.objects.ObjectRepository;
-import org.loose.fis.sre.exceptions.IncorrectNameException;
 import org.loose.fis.sre.exceptions.NoAppointmentsException;
 import org.loose.fis.sre.model.Appointment;
 import javafx.scene.text.Text;
@@ -43,8 +42,9 @@ public class SeeTodaysAppointments {
     @FXML
     private Text message;
 
+
     @FXML
-    private TextArea seeAppointments;
+    private ListView<String> appointmentsList = new ListView<String>();;
 
     public void initialize() {
         setYear.getItems().addAll("2021", "2022");
@@ -68,26 +68,32 @@ public class SeeTodaysAppointments {
 
     @FXML
     public void handleShowAppointmentsAction() {
-        try {
-            seeAppointments.setText(AppointmentService.seeAppointments(WhoIsLoggedInfo.getLoggedUsername(),setDay.getAccessibleText(), setMonth.getAccessibleText(), setYear.getAccessibleText()));
-        } catch (NoAppointmentsException e) {
-            seeAppointments.setText(e.getMessage());
-        } catch (IncorrectNameException e){
-            seeAppointments.setText(e.getMessage());
-        }
+//        try {
+//            seeAppointments.setText(AppointmentService.seeAppointments(WhoIsLoggedInfo.getLoggedUsername(),setDay.getAccessibleText(), setMonth.getAccessibleText(), setYear.getAccessibleText()));
+//        } catch (NoAppointmentsException e) {
+//            seeAppointments.setText(e.getMessage());
+//        } catch (IncorrectNameException e){
+//            seeAppointments.setText(e.getMessage());
+//        }
+            updateListView();
+
     }
 
-//    public void updateListView() {
-//
-//        ObservableList<String> items = FXCollections.observableArrayList();
-//        for (Appointment appointment : appointmentsRepository.find()) {
-//            if (WhoIsLoggedInfo.getLoggedUsername().equals(appointment.getDoctor()) && setDay.getValue().equals(appointment.getDay()) && setMonth.getValue().equals(appointment.getMonth()) && setYear.getValue().equals(appointment.getYear())) {
-//                items.add(appointment.getUser());
-//                items.add(appointment.getHour());
-//                appointmentListView.setItems(items);
-//            }
-//        }
-//
-//
-//    }
+    public void updateListView() {
+
+        ObservableList<String> items = FXCollections.observableArrayList();
+        String s = "";
+        for (Appointment appointment : appointmentsRepository.find()) {
+            if (WhoIsLoggedInfo.getLoggedUsername().equals(appointment.getDoctor()) && setDay.getValue().equals(appointment.getDay()) &&
+                    setMonth.getValue().equals(appointment.getMonth()) && setYear.getValue().equals(appointment.getYear())) {
+                s=appointment.getUser() + " PROGRAMAT LA ORA: " + appointment.getHour();
+                //items.add(appointment.getUser());
+                //items.add(appointment.getHour());
+                //appointmentsList.setItems(items);
+                appointmentsList.getItems().add(s);
+            }
+        }
+
+
+    }
 }

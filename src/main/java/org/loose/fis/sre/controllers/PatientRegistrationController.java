@@ -40,7 +40,7 @@ public class PatientRegistrationController {
     @FXML
     void handleRegisterAction() {
         try {
-            UserService.addUser(patientUsernameField.getText(), patientPasswordField.getText(), "Pacient", patientNameField.getText(), patientAgeField.getText(), patientPhoneNumberField.getText(), patientEmailField.getText(), null);
+            UserService.addUser(patientUsernameField.getText(), patientPasswordField.getText(), "Patient", patientNameField.getText(), patientAgeField.getText(), patientPhoneNumberField.getText(), patientEmailField.getText(), null);
             registrationMessage.setText("Account created successfully!");
         } catch (InvalidCredentialException e2){
             registrationMessage.setText(e2.getMessage());
