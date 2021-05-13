@@ -202,18 +202,18 @@ public class UserService {
                 oku = 1;
                 if(encodePassword(username,password).equals(user.getPassword())) {
                     okp = 1;
-                    if (Objects.equals(role, user.getRole()))
-                        okr=1;
-                }
 
+                }
             }
+            if (Objects.equals(role, user.getRole()))
+                okr=1;
 
         }
         if (oku == 0)
             throw new UsernameDoesNotExistException(username);
         if (okp == 0)
             throw new WrongPasswordException();
-        if(okr == 0)
+        if (okr == 0)
             throw new WrongRoleException();
 
     }

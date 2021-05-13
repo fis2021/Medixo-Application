@@ -71,10 +71,6 @@ public class MakeAppointmentController {
         {
             AppointmentService.addAppointment((String) day.getValue(),(String) month.getValue(),(String) year.getValue(),(String) hour.getValue(),
                     doctor.getText(),username.getText());
-            /*Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("make_appointment.fxml")));
-            Stage scene= (Stage) makeAppointment.getScene().getWindow();
-            scene.setTitle("Medixo");
-            scene.setScene(new Scene(root,725,490));*/
             make_appointmentMessage.setText("Appointment saved successfully!");
         }
         catch (IncorrectDateException e) {
@@ -85,8 +81,7 @@ public class MakeAppointmentController {
         }
         catch (DoctorDoesNotExistException e) {
             make_appointmentMessage.setText(e.getMessage());
-        }
-        catch (AppointmentAlreadyExistException e) {
+        } catch (AppointmentAlreadyExistException e) {
             make_appointmentMessage.setText(e.getMessage());
         } catch (UnavailableDayException e) {
             make_appointmentMessage.setText(e.getMessage());
