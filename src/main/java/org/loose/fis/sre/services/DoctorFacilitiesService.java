@@ -27,7 +27,7 @@ public class DoctorFacilitiesService {
         servicesRepository = database.getRepository(DoctorService.class);
     }
 
-    public static void addService(String username,String serviceName, String description, int price) throws EmptyTextfieldsException, DoctorServiceAlreadyExistsException{
+    public static void addService(String username,String serviceName, String description, String price) throws EmptyTextfieldsException, DoctorServiceAlreadyExistsException{
         checkEmptyTextFields(serviceName);
         checkServiceExists(serviceName);
         servicesRepository.insert(new DoctorService(username, serviceName, description, price));

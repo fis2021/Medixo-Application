@@ -34,5 +34,6 @@
       <Text fill="#545050" layoutX="222.0" layoutY="391.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select specialization:" />
 
       <Text fx:id="registrationMessage" fill="#494a47" layoutX="168.0" layoutY="448.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="363.5078125" />
+      <Button fx:id="backButton" layoutX="77.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleBackAction" style="-fx-background-color: B7CE8F;" text="Back" />
    </children>
 </Pane>
