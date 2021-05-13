@@ -39,6 +39,8 @@ public class AppointmentService {
         appointmentRepository.insert(app);
     }
 
+
+
     static void checkAppointmentDoesNotAlreadyExist(String day,String month,String year,String hour,String doctor) throws AppointmentAlreadyExistException {
         for (Appointment appointment : appointmentRepository.find()) {
             if (Objects.equals(day, appointment.getDay()) && Objects.equals(month, appointment.getMonth()) && Objects.equals(year, appointment.getYear()) && Objects.equals(hour, appointment.getHour())  && Objects.equals(doctor, appointment.getDoctor()))
@@ -56,13 +58,13 @@ public class AppointmentService {
         }
     }
 
-    public static String  seeAppointments(String Name) throws NoAppointmentsException
+    public static String  seeAppointments(String user) throws NoAppointmentsException, IncorrectNameException
     {
-        UserService.CheckNameCredentials(Name);
+        UserService.checkUsernameA(user);
         String s="";
         for (Appointment  appointment : appointmentRepository.find())
         {
-            if(Objects.equals(Name, appointment.getDoctor())) {
+            if(Objects.equals(user, appointment.getUser())) {
                 s = s + appointment.toString();
                 s = s + "\n";
             }
