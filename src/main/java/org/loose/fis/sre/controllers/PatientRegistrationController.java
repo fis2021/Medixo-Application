@@ -1,5 +1,10 @@
 package org.loose.fis.sre.controllers;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import org.loose.fis.sre.exceptions.InvalidCredentialException;
 import org.loose.fis.sre.exceptions.InvalidEmailException;
 import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
@@ -44,5 +49,14 @@ public class PatientRegistrationController {
         } catch (InvalidEmailException e3 ){
             registrationMessage.setText(e3.getMessage());
         }
+    }
+
+    public void handleLoginAction(javafx.event.ActionEvent login) throws Exception {
+        Parent root1 = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
+        Stage window = (Stage) ((Node) login.getSource()).getScene().getWindow();
+        ;
+        window.setTitle("Log In");
+        window.setScene(new Scene(root1, 725, 490));
+        window.show();
     }
 }

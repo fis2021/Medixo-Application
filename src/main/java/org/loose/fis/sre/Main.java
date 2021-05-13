@@ -33,7 +33,6 @@ public class Main extends Application {
             applicationHomePath.toFile().mkdirs();
     }
 
-
     public static void main(String[] args) {
         launch(args);
     }
