@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.loose.fis.sre.services.DoctorFacilitiesService;
+import org.loose.fis.sre.services.AppointmentService;
 import org.loose.fis.sre.services.FileSystemService;
 import org.loose.fis.sre.services.UserService;
 
@@ -19,6 +20,7 @@ public class Main extends Application {
         initDirectory();
         UserService.initDatabase();
         DoctorFacilitiesService.initDatabase();
+        AppointmentService.initDatabase();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         primaryStage.setTitle("Medixo");
         primaryStage.setScene(new Scene(root, 700, 500));
