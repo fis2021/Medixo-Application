@@ -4,17 +4,17 @@ import org.dizitart.no2.RemoveOptions;
 public class DoctorService extends RemoveOptions {
 
     private String username;
-    private String serviceName;
+    private String appointmentTypeName;
     private String description;
     private String price;
 
     public DoctorService() {
     }
 
-    public DoctorService(String username,String serviceName, String description, String price) {
+    public DoctorService(String username,String appointmentTypeName, String description, String price) {
         this.username = username;
         this.description = description;
-        this.serviceName = serviceName;
+        this.appointmentTypeName = appointmentTypeName;
         this.price = price;
     }
 
@@ -27,7 +27,7 @@ public class DoctorService extends RemoveOptions {
     }
 
     public String getServiceName(){
-        return serviceName;
+        return appointmentTypeName;
     }
 
     public String getPrice(){
@@ -44,8 +44,8 @@ public class DoctorService extends RemoveOptions {
         this.description = description;
     }
 
-    public void setServiceName(String serviceName){
-        this.serviceName = serviceName;
+    public void setAppointmentTypeName(String appointmentTypeName){
+        this.appointmentTypeName = appointmentTypeName;
     }
 
     public void setPrice (String price){

@@ -43,8 +43,14 @@ public class DoctorMenu {
 
     @FXML
     void handleEditAppointmentAction(ActionEvent event) {
-
-
+        try{
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("edit_appointment_type.fxml"));
+            Stage scene= (Stage) logOutButton.getScene().getWindow();
+            scene.setTitle("Medixo");
+            scene.setScene(new Scene(root,725,490));
+        } catch (Exception e2){
+            System.out.println("Can t open the 'Log in' window!");
+        }
     }
 
     @FXML
