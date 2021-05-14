@@ -9,6 +9,8 @@ import org.loose.fis.sre.exceptions.InvalidCredentialException;
 import org.loose.fis.sre.exceptions.InvalidEmailException;
 import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.sre.services.UserService;
+import org.loose.fis.sre.model.Specialization;
+import org.loose.fis.sre.services.*;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
@@ -49,7 +51,8 @@ public class DoctorRegistrationController {
 
     @FXML
     public void initialize() {
-        specialization.getItems().addAll("Dermatologist", "Cardiologist", "Neurologist", "Pediatrician");
+        for (Specialization s : SpecializationService.getServicesRepository().find())
+            specialization.getItems().add(s.getSpecialization());
     }
 
     @FXML
