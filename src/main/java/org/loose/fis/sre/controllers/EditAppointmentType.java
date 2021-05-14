@@ -86,9 +86,11 @@ public class EditAppointmentType {
 
     public void updateListView(){
         ObservableList<String> items = FXCollections.observableArrayList();
+        String s="";
         for (DoctorService service : appointmentTypesRepository.find()) {
             if (WhoIsLoggedInfo.getLoggedUsername().equals(service.getUsername())) {
-                items.add(service.getServiceName());
+                s=service.getServiceName() + "/" + service.getDescription() + "/" + service.getPrice();
+                items.add(s);
                 appointmentListView.setItems(items);
             }
         }

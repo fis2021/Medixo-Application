@@ -87,10 +87,8 @@ public class SeeTodaysAppointments {
             if (WhoIsLoggedInfo.getLoggedUsername().equals(appointment.getDoctor()) && setDay.getValue().equals(appointment.getDay()) &&
                     setMonth.getValue().equals(appointment.getMonth()) && setYear.getValue().equals(appointment.getYear())) {
                 s=appointment.getUser() + " PROGRAMAT LA ORA: " + appointment.getHour();
-                //items.add(appointment.getUser());
-                //items.add(appointment.getHour());
-                //appointmentsList.setItems(items);
-                appointmentsList.getItems().add(s);
+                items.add(s);
+                appointmentsList.setItems(items);
             }
         }
 

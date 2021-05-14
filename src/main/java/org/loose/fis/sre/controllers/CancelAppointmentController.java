@@ -22,7 +22,7 @@ import java.util.Optional;
 
 public class CancelAppointmentController {
 
-    private static ObjectRepository<Appointment> appointmentObjectRepositoryRepository = AppointmentService.getServicesRepository();
+    private static ObjectRepository<Appointment> appointmentObjectRepositoryRepository = AppointmentService.getAppointmentRepository();
 
     @FXML
     private ListView<String> appointmentsListView;
