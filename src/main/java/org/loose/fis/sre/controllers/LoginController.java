@@ -75,10 +75,10 @@ public class LoginController {
 
             if (userRole.equals("Manager")) {
                 WhoIsLoggedInfo.setLoggedUsername(usernameField.getText());
-                Parent root2 = FXMLLoader.load(getClass().getClassLoader().getResource("manager_menu.fxml"));
+                Parent root2 = FXMLLoader.load(getClass().getClassLoader().getResource("add_specializations.fxml"));
                 Stage window = (Stage) ((Node) login.getSource()).getScene().getWindow();
                 ;
-                window.setTitle("Manager Menu");
+                window.setTitle("Manager");
                 window.setScene(new Scene(root2, 725, 490));
                 window.show();
 
