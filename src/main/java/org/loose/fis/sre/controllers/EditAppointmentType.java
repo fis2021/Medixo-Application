@@ -57,7 +57,8 @@ public class EditAppointmentType {
         }
 
         try{
-            DoctorFacilitiesService.editAppointmentType(WhoIsLoggedInfo.getLoggedUsername(),appointmentListView.getSelectionModel().getSelectedItem().toString(),appointmentTypeName.getText(), description.getText(), price.getText());
+            DoctorFacilitiesService.editAppointmentType(WhoIsLoggedInfo.getLoggedUsername(),appointmentListView.getSelectionModel().getSelectedItem().toString(),
+                    appointmentTypeName.getText(), description.getText(), price.getText());
             updateListView();
             message.setText("Service edited successfully !");
 
@@ -89,8 +90,9 @@ public class EditAppointmentType {
         String s="";
         for (DoctorService service : appointmentTypesRepository.find()) {
             if (WhoIsLoggedInfo.getLoggedUsername().equals(service.getUsername())) {
-                s=service.getServiceName() + "/" + service.getDescription() + "/" + service.getPrice();
-                items.add(s);
+//                s=service.getServiceName() + "/" + service.getDescription() + "/" + service.getPrice();
+//                items.add(s);
+                items.add(service.getServiceName());
                 appointmentListView.setItems(items);
             }
         }

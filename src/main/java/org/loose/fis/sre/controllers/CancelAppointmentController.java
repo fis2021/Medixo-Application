@@ -86,7 +86,6 @@ public class CancelAppointmentController {
                     getMessage.setText("Appointment deleted successfully !");
                 }
             }
-
             updateListView();
         }catch(AppointmentDoesNotExistException e){
             getMessage.setText(e.getMessage());
