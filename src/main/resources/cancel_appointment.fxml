@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CancelAppointment"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #DAF7A6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.CancelAppointmentController">
+    <children>
+        <ListView fx:id="appointmentsListView" layoutX="60.0" layoutY="122.0" prefHeight="172.0" prefWidth="581.0" />
+        <Text fx:id="getMessage" layoutX="190.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="265.0" />
+        <Button fx:id="cancelAppointment" layoutX="516.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleCancelAppointmentAction" style="-fx-background-color: B7CE8F;" text="Cancel Appointment" />
+        <Button fx:id="goBack" layoutX="60.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleGoBackAction" style="-fx-background-color: B7CE8F;" text="Back" />
+        <Text layoutX="257.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Appointments:">
+            <font>
+                <Font name="Bell MT Italic" size="25.0" />
+            </font>
+        </Text>
+        <Text layoutX="60.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please introduce the date and the hour of the appointment you want to cancel:" wrappingWidth="489.99999463558197">
+            <font>
+                <Font name="Bell MT" size="15.0" />
+            </font>
+        </Text>
+        <ChoiceBox fx:id="day" layoutX="101.0" layoutY="337.0" prefHeight="25.0" prefWidth="41.0" />
+        <ChoiceBox fx:id="month" layoutX="155.0" layoutY="337.0" prefWidth="150.0" />
+        <ChoiceBox fx:id="year" layoutX="315.0" layoutY="337.0" prefHeight="25.0" prefWidth="71.0" />
+        <ChoiceBox fx:id="hour" layoutX="101.0" layoutY="373.0" prefHeight="25.0" prefWidth="60.0" />
+        <Text layoutX="58.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:">
+            <font>
+                <Font name="Bell MT" size="15.0" />
+            </font>
+        </Text>
+        <Text layoutX="56.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hour:">
+            <font>
+                <Font name="Bell MT" size="15.0" />
+            </font>
+        </Text>
+    </children>
 </AnchorPane>
