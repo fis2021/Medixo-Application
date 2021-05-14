@@ -41,16 +41,16 @@ public class DoctorFacilitiesService {
             throw new EmptyTextfieldsException();
     }
 
-    public static void deleteService(String username,String serviceName){
+    public static void deleteService(String username,String appointmentTypeName){
         DoctorService service_aux = new  DoctorService();
 
         for ( DoctorService service : servicesRepository.find()){
-            if (username.equals(service.getUsername())&&serviceName.equals(service.getServiceName())) {
+            if (username.equals(service.getUsername()) && appointmentTypeName.equals(service.getServiceName())) {
                 service_aux = service;
             }
         }
 
-        servicesRepository.remove(eq("serviceName",serviceName),service_aux);
+        servicesRepository.remove(eq("appointmentTypeName",appointmentTypeName),service_aux);
     }
 
     public static void editAppointmentType(String username, String appointmentTypeNameOld, String appointmentTypeNameNew,  String descriptionNew,  String priceNew) throws EmptyTextfieldsException, DoctorServiceAlreadyExistsException {

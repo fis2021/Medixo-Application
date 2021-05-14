@@ -5,10 +5,12 @@ import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.exceptions.*;
 import org.loose.fis.sre.exceptions.UnavailableDayException;
 import org.loose.fis.sre.model.Appointment;
+import org.loose.fis.sre.model.DoctorService;
 
 import java.util.List;
 import java.util.Objects;
 
+import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
 import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
 
 public class AppointmentService {
@@ -21,7 +23,7 @@ public class AppointmentService {
     }
     public static void initDatabase() {
         Nitrite database = Nitrite.builder()
-                .filePath(getPathToFile("appointments-database.db").toFile())
+                .filePath(getPathToFile("appointments-database-final.db").toFile())
                 .openOrCreate("test", "test");
 
         appointmentRepository = database.getRepository(Appointment.class);
@@ -97,7 +99,8 @@ public class AppointmentService {
         Appointment service_aux = new  Appointment();
         int ok=0;
         for ( Appointment service : appointmentRepository.find()){
-            if (username.equals(service.getUser())&&day.equals(service.getDay())&&month.equals(service.getMonth())&&year.equals(service.getYear())&&hour.equals(service.getHour())) {
+            if (username.equals(service.getUser()) && day.equals(service.getDay()) && month.equals(service.getMonth()) &&
+                    year.equals(service.getYear()) && hour.equals(service.getHour())) {
                 service_aux = service;
                 ok=1;
             }

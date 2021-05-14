@@ -1,7 +1,9 @@
 package org.loose.fis.sre.model;
+import org.dizitart.no2.RemoveOptions;
+
 import java.util.Objects;
 
-public class Appointment {
+public class Appointment extends RemoveOptions {
 
     private String day;
     private String month;

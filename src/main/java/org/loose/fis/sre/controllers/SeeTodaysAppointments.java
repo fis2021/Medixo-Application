@@ -44,7 +44,7 @@ public class SeeTodaysAppointments {
 
 
     @FXML
-    private ListView<String> appointmentsList = new ListView<String>();;
+    private ListView<String> appointmentsList = new ListView<String>();
 
     public void initialize() {
         setYear.getItems().addAll("2021", "2022");
@@ -68,15 +68,7 @@ public class SeeTodaysAppointments {
 
     @FXML
     public void handleShowAppointmentsAction() {
-//        try {
-//            seeAppointments.setText(AppointmentService.seeAppointments(WhoIsLoggedInfo.getLoggedUsername(),setDay.getAccessibleText(), setMonth.getAccessibleText(), setYear.getAccessibleText()));
-//        } catch (NoAppointmentsException e) {
-//            seeAppointments.setText(e.getMessage());
-//        } catch (IncorrectNameException e){
-//            seeAppointments.setText(e.getMessage());
-//        }
             updateListView();
-
     }
 
     public void updateListView() {
@@ -84,7 +76,7 @@ public class SeeTodaysAppointments {
         ObservableList<String> items = FXCollections.observableArrayList();
         String s = "";
         for (Appointment appointment : appointmentsRepository.find()) {
-            if (WhoIsLoggedInfo.getLoggedUsername().equals(appointment.getDoctor()) && setDay.getValue().equals(appointment.getDay()) &&
+            if (WhoIsLoggedInfo.getLoggedName().equals(appointment.getDoctor()) && setDay.getValue().equals(appointment.getDay()) &&
                     setMonth.getValue().equals(appointment.getMonth()) && setYear.getValue().equals(appointment.getYear())) {
                 s=appointment.getUser() + " PROGRAMAT LA ORA: " + appointment.getHour();
                 items.add(s);

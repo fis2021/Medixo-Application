@@ -8,6 +8,7 @@ import org.loose.fis.sre.model.User;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,6 +25,10 @@ public class UserService {
                 .openOrCreate("test", "test");
 
         userRepository = database.getRepository(User.class);
+    }
+
+    public static List<User> getAllUsers(){
+        return userRepository.find().toList();
     }
 
     public static void addUser(String username, String password, String role, String name, String age, String phoneNumber, String email, String specialization) throws UsernameAlreadyExistsException, InvalidCredentialException, InvalidEmailException  {
