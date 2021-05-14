@@ -1,13 +1,8 @@
 package org.loose.fis.sre.model;
-
-import org.dizitart.no2.objects.Id;
-
 import java.util.Objects;
 
 public class Appointment {
 
-
-    @Id
     private String day;
     private String month;
     private String year;

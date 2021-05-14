@@ -29,9 +29,6 @@ public class SetHoliday {
     private ChoiceBox year;
 
     @FXML
-    private TextField doctor;
-
-    @FXML
     private Text setHolidayMessage;
 
 
@@ -59,7 +56,7 @@ public class SetHoliday {
     public void handleSetHolidayAction() throws AppointmentAlreadyExistException, DoctorDoesNotExistException, UnavailableDayException {
         try
         {
-            AppointmentService.addAppointment((String) day.getValue(),(String) month.getValue(),(String) year.getValue(),"00:00", doctor.getText(),
+            AppointmentService.addAppointment((String) day.getValue(),(String) month.getValue(),(String) year.getValue(),"00:00", WhoIsLoggedInfo.getLoggedName(),
                     WhoIsLoggedInfo.getLoggedUsername());
             setHolidayMessage.setText("Holiday saved successfully!");
         }

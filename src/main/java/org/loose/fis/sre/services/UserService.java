@@ -5,7 +5,6 @@ import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.exceptions.*;
 import org.loose.fis.sre.model.User;
 
-import java.net.PasswordAuthentication;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -202,11 +201,11 @@ public class UserService {
                 oku = 1;
                 if(encodePassword(username,password).equals(user.getPassword())) {
                     okp = 1;
-
+                if (Objects.equals(role, user.getRole()))
+                    okr=1;
                 }
             }
-            if (Objects.equals(role, user.getRole()))
-                okr=1;
+
 
         }
         if (oku == 0)
@@ -216,6 +215,14 @@ public class UserService {
         if (okr == 0)
             throw new WrongRoleException();
 
+    }
+
+    public static String findName(String username){
+        for (User user : userRepository.find()){
+            if(Objects.equals(username, user.getUsername()))
+                return user.getName();
+        }
+        return "";
     }
 
     public static void CheckNameCredentials (String Name) throws NoAppointmentsException

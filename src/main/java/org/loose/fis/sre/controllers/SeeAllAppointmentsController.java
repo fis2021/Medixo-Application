@@ -27,7 +27,7 @@ import java.util.Objects;
 
 public class SeeAllAppointmentsController {
 
-    private static ObjectRepository<Appointment> appointmentObjectRepositoryRepository = AppointmentService.getServicesRepository();
+    private static ObjectRepository<Appointment> appointmentObjectRepositoryRepository = AppointmentService.getAppointmentRepository();
 
     @FXML
     private Button goBackButton;
@@ -36,7 +36,7 @@ public class SeeAllAppointmentsController {
     private Text response;
 
     @FXML
-    private ListView<String> appointmentsListView;
+    private ListView<String> appointmentsListView = new ListView<String>();
 
     @FXML
     public void initialize() throws IOException {
@@ -53,10 +53,10 @@ public class SeeAllAppointmentsController {
         ObservableList<String> items = FXCollections.observableArrayList();
         for (Appointment service : appointmentObjectRepositoryRepository.find()) {
             if (WhoIsLoggedInfo.getLoggedUsername().equals(service.getUser())) {
+                ok=1;
                 String s = service.getDay() + "/" + service.getMonth() + "/" + service.getYear() + " at " + service.getHour() + ", doctor " + service.getDoctor();
                 items.add(s);
                 appointmentsListView.setItems(items);
-                ok=1;
             }
         }
         if (ok==0)

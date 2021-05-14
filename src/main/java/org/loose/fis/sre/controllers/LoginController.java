@@ -54,6 +54,7 @@ public class LoginController {
             String userRole = (String) selectRole.getValue();
             if (userRole.equals("Doctor")) {
                 WhoIsLoggedInfo.setLoggedUsername(usernameField.getText());
+                WhoIsLoggedInfo.setLoggedName(UserService.findName(usernameField.getText()));
                 Parent root2 = FXMLLoader.load(getClass().getClassLoader().getResource("doctor_menu.fxml"));
                 Stage window = (Stage) ((Node) login.getSource()).getScene().getWindow();
                 ;
