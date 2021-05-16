@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #DAF7A6; -fx-border-color: CAE59B; -fx-border-width: 0px 0px 2px 0px;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.DoctorRegistrationController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #DAF7A6; -fx-border-color: CAE59B; -fx-border-width: 0px 0px 2px 0px;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.DoctorRegistrationController">
    <children>
       <Text fill="#494a47" layoutX="207.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your credentials below:">
          <font>
@@ -27,7 +27,7 @@
 
       <TextField fx:id="doctorAgeField" alignment="CENTER" layoutX="276.0" layoutY="214.0" promptText="Age" style="-fx-background-color: ffffff; -fx-border-color: B7CE8F; -fx-border-width: 0px 0px 2px 0px;" />
 
-      <Button layoutX="578.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleRegisterAction" style="-fx-background-color: B7CE8F;" text="Register" />
+      <Button fx:id="registerButton" layoutX="578.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleRegisterAction" style="-fx-background-color: B7CE8F;" text="Register" />
 
       <ChoiceBox fx:id="specialization" layoutX="361.0" layoutY="374.0" prefWidth="150.0" style="-fx-background-color: B7CE8F;" />
 
