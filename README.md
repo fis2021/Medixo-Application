@@ -57,7 +57,8 @@ To understand better how to set up a project using JavaFX 11+ and [Gradle](https
 The user needs to first register into the application by selecting one of the 2 roles:
 * patient
 * doctor
-  These roles require a unique username, a password and the basic information like full name, age, email adress, phone number and, for the doctor role, specialization.
+
+These roles require a unique username, a password and the basic information like full name, age, email adress, phone number and, for the doctor role, specialization.
 
 ## Patient
 An agent can make an appointment, see all his appointments and cancel an existing appointment.
@@ -69,7 +70,7 @@ A Doctor can add, edit and delete an appointment type. Also, he can see his appo
 After logging in he will see a menu from where he can choose an option.
 An appointment type should contain a name, a description and a price.
 
-##Manager
+## Manager
 After he logs in, the manager can add a new specialization, which will be available at the registration process for doctors.
 
 ## Resources
