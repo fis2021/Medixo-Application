@@ -17,7 +17,7 @@
 
         <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="255.0" layoutY="130.0" prefHeight="41.0" prefWidth="185.0" promptText="Password" style="-fx-background-color: ffffff; -fx-border-color: B7CE8F; -fx-border-width: 0px 0px 2px 0px;" />
 
-        <Button layoutX="297.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleLoginAction" prefHeight="29.0" prefWidth="101.0" style="-fx-background-color: B7CE8F;" text="Log in" />
+        <Button fx:id="loginButton" layoutX="297.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleLoginAction" prefHeight="29.0" prefWidth="101.0" style="-fx-background-color: B7CE8F;" text="Log in" />
         <Text fill="#494a47" layoutX="225.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="If you want to register click " wrappingWidth="199.1474609375">
             <font>
                 <Font name="Bell MT" size="17.0" />
