@@ -23,6 +23,7 @@ public class DoctorFacilitiesService {
     }
 
     public static void initDatabase() {
+        FileSystemService.initDirectory();
         Nitrite database = Nitrite.builder()
                 .filePath(FileSystemService.getPathToFile("medixo-appointmentTypes.db").toFile())
                 .openOrCreate("test", "test");
