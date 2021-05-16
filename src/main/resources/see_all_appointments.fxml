@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #DAF7A6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.SeeAllAppointmentsController">
+    <children>
+        <ListView fx:id="appointmentsListView" layoutX="135.0" layoutY="130.0" prefHeight="258.0" prefWidth="430.0" />
+        <Text fx:id="response" layoutX="190.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="265.0" />
+        <Button fx:id="goBackButton" layoutX="60.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleGoBackAction" style="-fx-background-color: B7CE8F;" text="Back" />
+        <Text layoutX="257.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Appointments:">
+            <font>
+                <Font name="Bell MT Italic" size="25.0" />
+            </font>
+        </Text>
+    </children>
+</AnchorPane>
