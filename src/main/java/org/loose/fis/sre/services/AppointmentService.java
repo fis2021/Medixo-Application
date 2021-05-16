@@ -22,6 +22,7 @@ public class AppointmentService {
         return appointmentRepository;
     }
     public static void initDatabase() {
+        FileSystemService.initDirectory();
         Nitrite database = Nitrite.builder()
                 .filePath(getPathToFile("appointments-database-final.db").toFile())
                 .openOrCreate("test", "test");
